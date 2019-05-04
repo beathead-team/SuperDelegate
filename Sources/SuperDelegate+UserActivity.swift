@@ -31,7 +31,7 @@ public protocol UserActivityCapable: ApplicationLaunched {
     
     /// Called whenever your application must continue a user activity after the interface has been loaded.
     /// @return true if your app handled the user activity, false if it did not.
-    func resume(userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool
+    func resume(userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Swift.Void) -> Bool
 }
 
 
@@ -45,7 +45,7 @@ extension SuperDelegate {
     
     
     @objc(application:continueUserActivity:restorationHandler:)
-    final public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
+    final public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Swift.Void) -> Bool {
         guard let userActivityCapableSelf = self as? UserActivityCapable else {
             noteImproperAPIUsage("Received continueUserActivity but \(self) does not conform to UserActivityCapable. Not handling user activity event.")
             return false

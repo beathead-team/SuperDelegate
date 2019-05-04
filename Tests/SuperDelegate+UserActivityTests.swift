@@ -206,7 +206,7 @@ class UserActivityCapableDelegate: AppLaunchedDelegate, UserActivityCapable {
     }
     
     var continuedUserActivity: NSUserActivity?
-    func resume(userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Swift.Void) -> Bool {
+    func resume(userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Swift.Void) -> Bool {
         continuedUserActivity = userActivity
         return true
     }

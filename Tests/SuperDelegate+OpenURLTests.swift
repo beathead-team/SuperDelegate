@@ -36,19 +36,19 @@ class SuperDelegateOpenURLTests: SuperDelegateTests {
         let copyBeforeUse = true
         
         openURLCapableDelegate.shouldOpenNextURL = false
-        let launchOptions: [UIApplicationLaunchOptionsKey : Any]
+        let launchOptions: [UIApplication.LaunchOptionsKey : Any]
         if #available(iOS 9.0, *) {
             launchOptions = [
-                UIApplicationLaunchOptionsKey.url : url,
-                UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                UIApplicationLaunchOptionsKey.annotation : annotation,
-                UIApplicationLaunchOptionsKey.openInPlace : copyBeforeUse
+                UIApplication.LaunchOptionsKey.url : url,
+                UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                UIApplication.LaunchOptionsKey.annotation : annotation,
+                UIApplication.LaunchOptionsKey.openInPlace : copyBeforeUse
             ]
         } else {
             launchOptions = [
-                UIApplicationLaunchOptionsKey.url : url,
-                UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                UIApplicationLaunchOptionsKey.annotation : annotation
+                UIApplication.LaunchOptionsKey.url : url,
+                UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                UIApplication.LaunchOptionsKey.annotation : annotation
             ]
         }
         
@@ -74,10 +74,10 @@ class SuperDelegateOpenURLTests: SuperDelegateTests {
             XCTAssertTrue(
                 openURLCapableDelegate.application(UIApplication.shared,
                                                    didFinishLaunchingWithOptions: [
-                                                    UIApplicationLaunchOptionsKey.url : url,
-                                                    UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                                                    UIApplicationLaunchOptionsKey.annotation : annotation,
-                                                    UIApplicationLaunchOptionsKey.openInPlace : copyBeforeUse
+                                                    UIApplication.LaunchOptionsKey.url : url,
+                                                    UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                                                    UIApplication.LaunchOptionsKey.annotation : annotation,
+                                                    UIApplication.LaunchOptionsKey.openInPlace : copyBeforeUse
                     ]
                 )
             )
@@ -85,9 +85,9 @@ class SuperDelegateOpenURLTests: SuperDelegateTests {
             XCTAssertTrue(
                 openURLCapableDelegate.application(UIApplication.shared,
                                                    didFinishLaunchingWithOptions: [
-                                                    UIApplicationLaunchOptionsKey.url : url,
-                                                    UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                                                    UIApplicationLaunchOptionsKey.annotation : annotation
+                                                    UIApplication.LaunchOptionsKey.url : url,
+                                                    UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                                                    UIApplication.LaunchOptionsKey.annotation : annotation
                     ]
                 )
             )
@@ -118,9 +118,9 @@ class SuperDelegateOpenURLTests: SuperDelegateTests {
                 openURLCapableDelegate.application(UIApplication.shared,
                                                    open: url,
                                                    options: [
-                                                    UIApplicationOpenURLOptionsKey.sourceApplication : sourceBundleID,
-                                                    UIApplicationOpenURLOptionsKey.annotation : annotation,
-                                                    UIApplicationOpenURLOptionsKey.openInPlace : copyBeforeUse
+                                                    UIApplication.OpenURLOptionsKey.sourceApplication : sourceBundleID,
+                                                    UIApplication.OpenURLOptionsKey.annotation : annotation,
+                                                    UIApplication.OpenURLOptionsKey.openInPlace : copyBeforeUse
                     ]
                 )
             )
@@ -159,19 +159,19 @@ class SuperDelegateOpenURLTests: SuperDelegateTests {
         let copyBeforeUse = true
         
         openURLCapableDelegate.shouldOpenNextURL = true
-        let launchOptions: [UIApplicationLaunchOptionsKey : Any]
+        let launchOptions: [UIApplication.LaunchOptionsKey : Any]
         if #available(iOS 9.0, *) {
             launchOptions = [
-                UIApplicationLaunchOptionsKey.url : url,
-                UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                UIApplicationLaunchOptionsKey.annotation : annotation,
-                UIApplicationLaunchOptionsKey.openInPlace : copyBeforeUse
+                UIApplication.LaunchOptionsKey.url : url,
+                UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                UIApplication.LaunchOptionsKey.annotation : annotation,
+                UIApplication.LaunchOptionsKey.openInPlace : copyBeforeUse
             ]
         } else {
             launchOptions = [
-                UIApplicationLaunchOptionsKey.url : url,
-                UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                UIApplicationLaunchOptionsKey.annotation : annotation
+                UIApplication.LaunchOptionsKey.url : url,
+                UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                UIApplication.LaunchOptionsKey.annotation : annotation
             ]
         }
         
@@ -205,19 +205,19 @@ class SuperDelegateOpenURLTests: SuperDelegateTests {
         let copyBeforeUse = true
         
         openURLCapableDelegate.shouldOpenNextURL = true
-        let launchOptions: [UIApplicationLaunchOptionsKey : Any]
+        let launchOptions: [UIApplication.LaunchOptionsKey : Any]
         if #available(iOS 9.0, *) {
             launchOptions = [
-                UIApplicationLaunchOptionsKey.url : url,
-                UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                UIApplicationLaunchOptionsKey.annotation : annotation,
-                UIApplicationLaunchOptionsKey.openInPlace : copyBeforeUse
+                UIApplication.LaunchOptionsKey.url : url,
+                UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                UIApplication.LaunchOptionsKey.annotation : annotation,
+                UIApplication.LaunchOptionsKey.openInPlace : copyBeforeUse
             ]
         } else {
             launchOptions = [
-                UIApplicationLaunchOptionsKey.url : url,
-                UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                UIApplicationLaunchOptionsKey.annotation : annotation
+                UIApplication.LaunchOptionsKey.url : url,
+                UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                UIApplication.LaunchOptionsKey.annotation : annotation
             ]
         }
         
@@ -234,7 +234,7 @@ class SuperDelegateOpenURLTests: SuperDelegateTests {
         XCTAssertNotNil(openURLCapableDelegate.handledURLToOpen)
         openURLCapableDelegate.handledURLToOpen = nil
         
-        NotificationCenter.default.post(name: NSNotification.Name.UIApplicationWillEnterForeground, object: UIApplication.shared)
+        NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
         
         if #available(iOS 9.0, *) {
             XCTAssertTrue(openURLCapableDelegate.application(UIApplication.shared, open: url, options: [:]))
@@ -253,19 +253,19 @@ class SuperDelegateOpenURLTests: SuperDelegateTests {
         let copyBeforeUse = true
         
         openURLCapableDelegate.shouldOpenNextURL = true
-        let launchOptions: [UIApplicationLaunchOptionsKey : Any]
+        let launchOptions: [UIApplication.LaunchOptionsKey : Any]
         if #available(iOS 9.0, *) {
             launchOptions = [
-                UIApplicationLaunchOptionsKey.url : url,
-                UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                UIApplicationLaunchOptionsKey.annotation : annotation,
-                UIApplicationLaunchOptionsKey.openInPlace : copyBeforeUse
+                UIApplication.LaunchOptionsKey.url : url,
+                UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                UIApplication.LaunchOptionsKey.annotation : annotation,
+                UIApplication.LaunchOptionsKey.openInPlace : copyBeforeUse
             ]
         } else {
             launchOptions = [
-                UIApplicationLaunchOptionsKey.url : url,
-                UIApplicationLaunchOptionsKey.sourceApplication : sourceBundleID,
-                UIApplicationLaunchOptionsKey.annotation : annotation
+                UIApplication.LaunchOptionsKey.url : url,
+                UIApplication.LaunchOptionsKey.sourceApplication : sourceBundleID,
+                UIApplication.LaunchOptionsKey.annotation : annotation
             ]
         }
         

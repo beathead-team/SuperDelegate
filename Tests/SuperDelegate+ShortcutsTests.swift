@@ -35,7 +35,7 @@ class SuperDelegateShortcutsTests: SuperDelegateTests {
         
         shortcutCapableDelegate.shouldHandleNextShortcut = false
         let launchOptions = [
-            UIApplicationLaunchOptionsKey.shortcutItem : shortcutItem,
+            UIApplication.LaunchOptionsKey.shortcutItem : shortcutItem,
             ]
         
         XCTAssertTrue(shortcutCapableDelegate.application(UIApplication.shared, willFinishLaunchingWithOptions: launchOptions))
@@ -66,7 +66,7 @@ class SuperDelegateShortcutsTests: SuperDelegateTests {
         let shortcutItem = UIApplicationShortcutItem(type: "a shortcut type", localizedTitle: "the best shortcut title")
         
         let launchOptions = [
-            UIApplicationLaunchOptionsKey.shortcutItem : shortcutItem,
+            UIApplication.LaunchOptionsKey.shortcutItem : shortcutItem,
             ]
         
         XCTAssertFalse(shortcutCapableDelegate.application(UIApplication.shared, willFinishLaunchingWithOptions: launchOptions))

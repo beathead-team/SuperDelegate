@@ -25,25 +25,25 @@ import XCTest
 class SuperDelegateLaunchItemTests: SuperDelegateTests {
     
     func test_nilLaunchOptions() {
-        let launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil
+        let launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
         XCTAssertEqual(LaunchItem(launchOptions: launchOptions), .none)
     }
     
     func test_emptyLaunchOptions() {
-        let launchOptions: [UIApplicationLaunchOptionsKey : Any]? = [:]
+        let launchOptions: [UIApplication.LaunchOptionsKey : Any]? = [:]
         XCTAssertEqual(LaunchItem(launchOptions: launchOptions), .none)
     }
     
     func test_unknownLaunchOptions() {
-        let launchOptions: [UIApplicationLaunchOptionsKey : Any] = [
-            UIApplicationLaunchOptionsKey.init(rawValue: "test-key") : "test-value"
+        let launchOptions: [UIApplication.LaunchOptionsKey : Any] = [
+            UIApplication.LaunchOptionsKey.init(rawValue: "test-key") : "test-value"
         ]
         XCTAssertEqual(LaunchItem(launchOptions: launchOptions), .unknown(launchOptions: launchOptions))
     }
     
     func test_sourceApplicationLaunchItem() {
-        let launchOptions: [UIApplicationLaunchOptionsKey : Any]? = [
-            UIApplicationLaunchOptionsKey.sourceApplication : "test-bundle-id"
+        let launchOptions: [UIApplication.LaunchOptionsKey : Any]? = [
+            UIApplication.LaunchOptionsKey.sourceApplication : "test-bundle-id"
         ]
         XCTAssertEqual(LaunchItem(launchOptions: launchOptions), .sourceApplication(bundleIdentifier: "test-bundle-id"))
     }

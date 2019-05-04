@@ -84,7 +84,7 @@ class SuperDelegateTests: XCTestCase {
         let appLaunchedDelegate = AppLaunchedDelegate()
         appLaunchedDelegate.expectImproperAPIUsage = true
         // Must return false to signal that the URL user activity could not be handled.
-        XCTAssertFalse(appLaunchedDelegate.application(UIApplication.shared, willFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.userActivityDictionary : [UIApplicationLaunchOptionsKey.userActivity : NSUserActivity(activityType: "a type")]]))
+        XCTAssertFalse(appLaunchedDelegate.application(UIApplication.shared, willFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.userActivityDictionary : [UIApplication.LaunchOptionsKey.userActivity : NSUserActivity(activityType: "a type")]]))
         XCTAssertFalse(appLaunchedDelegate.expectImproperAPIUsage)
         XCTAssertEqual(appLaunchedDelegate.launchItem, LaunchItem.none)
     }
@@ -94,7 +94,7 @@ class SuperDelegateTests: XCTestCase {
         let appLaunchedDelegate = AppLaunchedDelegate()
         appLaunchedDelegate.expectImproperAPIUsage = true
         // Must return true to signal that the shortcut wasn't handled.
-        XCTAssertTrue(appLaunchedDelegate.application(UIApplication.shared, willFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.shortcutItem : UIApplicationShortcutItem(type: "A type", localizedTitle: "A title")]))
+        XCTAssertTrue(appLaunchedDelegate.application(UIApplication.shared, willFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.shortcutItem : UIApplicationShortcutItem(type: "A type", localizedTitle: "A title")]))
         XCTAssertFalse(appLaunchedDelegate.expectImproperAPIUsage)
         XCTAssertEqual(appLaunchedDelegate.launchItem, LaunchItem.none)
     }
@@ -103,7 +103,7 @@ class SuperDelegateTests: XCTestCase {
         let appLaunchedDelegate = AppLaunchedDelegate()
         appLaunchedDelegate.expectImproperAPIUsage = true
         // Must return false to signal that the URL can not be handled.
-        XCTAssertFalse(appLaunchedDelegate.application(UIApplication.shared, willFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.url : URL(fileURLWithPath: "/")]))
+        XCTAssertFalse(appLaunchedDelegate.application(UIApplication.shared, willFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.url : URL(fileURLWithPath: "/")]))
         XCTAssertFalse(appLaunchedDelegate.expectImproperAPIUsage)
         XCTAssertEqual(appLaunchedDelegate.launchItem, LaunchItem.none)
     }

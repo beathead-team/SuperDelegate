@@ -42,7 +42,7 @@ class SuperDelegateRemoteNotificationTests: SuperDelegateTests {
         let remoteNotificationCapableDelegate = RemoteNotificationCapableDelegate()
         let registrationError = NSError(domain: "push registration test", code: 0, userInfo: nil)
         remoteNotificationCapableDelegate.application(UIApplication.shared, didFailToRegisterForRemoteNotificationsWithError: registrationError)
-        if let registeredFailure = remoteNotificationCapableDelegate.registerFailure as? NSError {
+        if let registeredFailure = remoteNotificationCapableDelegate.registerFailure as NSError? {
             XCTAssertEqual(registrationError, registeredFailure)
             
         } else {
@@ -78,7 +78,7 @@ class SuperDelegateRemoteNotificationTests: SuperDelegateTests {
         XCTAssertTrue(
             remoteNotificationCapableDelegate.application(UIApplication.shared,
                                                           didFinishLaunchingWithOptions: [
-                                                            UIApplicationLaunchOptionsKey.remoteNotification : remoteNotificationDictionary
+                                                            UIApplication.LaunchOptionsKey.remoteNotification : remoteNotificationDictionary
                 ]
             )
         )
@@ -169,7 +169,7 @@ class SuperDelegateRemoteNotificationTests: SuperDelegateTests {
         XCTAssertTrue(
             remoteNotificationCapableDelegate.application(UIApplication.shared,
                                                           didFinishLaunchingWithOptions: [
-                                                            UIApplicationLaunchOptionsKey.remoteNotification : remoteNotificationDictionary
+                                                            UIApplication.LaunchOptionsKey.remoteNotification : remoteNotificationDictionary
                 ]
             )
         )
@@ -218,7 +218,7 @@ class SuperDelegateRemoteNotificationTests: SuperDelegateTests {
         XCTAssertTrue(
             remoteNotificationCapableDelegate.application(UIApplication.shared,
                                                           didFinishLaunchingWithOptions: [
-                                                            UIApplicationLaunchOptionsKey.remoteNotification : remoteNotificationDictionary
+                                                            UIApplication.LaunchOptionsKey.remoteNotification : remoteNotificationDictionary
                 ]
             )
         )
@@ -232,7 +232,7 @@ class SuperDelegateRemoteNotificationTests: SuperDelegateTests {
         
         XCTAssertNil(remoteNotificationCapableDelegate.receivedRemoteNotification)
         
-        NotificationCenter.default.post(name: NSNotification.Name.UIApplicationWillEnterForeground, object: UIApplication.shared)
+        NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
         
         remoteNotificationCapableDelegate.application(UIApplication.shared, didReceiveRemoteNotification: remoteNotificationDictionary, fetchCompletionHandler: { (_) in
             // Nothing to do here.
@@ -269,7 +269,7 @@ class SuperDelegateRemoteNotificationTests: SuperDelegateTests {
         XCTAssertTrue(
             remoteNotificationCapableDelegate.application(UIApplication.shared,
                                                           didFinishLaunchingWithOptions: [
-                                                            UIApplicationLaunchOptionsKey.remoteNotification : remoteNotificationDictionary
+                                                            UIApplication.LaunchOptionsKey.remoteNotification : remoteNotificationDictionary
                 ]
             )
         )

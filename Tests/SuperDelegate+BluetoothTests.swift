@@ -31,7 +31,7 @@ class SuperDelegateBluetoothTests: SuperDelegateTests {
     func test_applicationDidFinishLaunching_notifiesPeripheralManagerCapableDelegateOfBluetoothPeripheralsToRestore() {
         let bluetoothPeripheralCapableDelegate = BluetoothPeripheralCapableDelegate()
         let peripheralsToRestore = ["a", "b", "c"]
-        XCTAssertTrue(bluetoothPeripheralCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.bluetoothPeripherals : peripheralsToRestore]))
+        XCTAssertTrue(bluetoothPeripheralCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.bluetoothPeripherals : peripheralsToRestore]))
         XCTAssertEqual(peripheralsToRestore, bluetoothPeripheralCapableDelegate.peripheralManagerIdentifiersToRestore)
     }
     
@@ -39,7 +39,7 @@ class SuperDelegateBluetoothTests: SuperDelegateTests {
     func test_applicationDidFinishLaunching_notifiesPeripheralManagerCapableDelegateOfBluetoothCentralsToRestore() {
         let bluetoothCentralCapableDelegate = BluetoothCentralCapableDelegate()
         let centralsToRestore = ["d", "e", "f"]
-        XCTAssertTrue(bluetoothCentralCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.bluetoothCentrals : centralsToRestore]))
+        XCTAssertTrue(bluetoothCentralCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.bluetoothCentrals : centralsToRestore]))
         XCTAssertEqual(centralsToRestore, bluetoothCentralCapableDelegate.centralManagerIdentifiersToRestore)
     }
     
@@ -52,8 +52,8 @@ class SuperDelegateBluetoothTests: SuperDelegateTests {
             bluetoothPeripheralAndCentralCapableDelegate.application(UIApplication.shared,
                                                                      didFinishLaunchingWithOptions:
                 [
-                    UIApplicationLaunchOptionsKey.bluetoothPeripherals : peripheralsToRestore,
-                    UIApplicationLaunchOptionsKey.bluetoothCentrals : centralsToRestore
+                    UIApplication.LaunchOptionsKey.bluetoothPeripherals : peripheralsToRestore,
+                    UIApplication.LaunchOptionsKey.bluetoothCentrals : centralsToRestore
                 ]
             )
         )
@@ -69,8 +69,8 @@ class SuperDelegateBluetoothTests: SuperDelegateTests {
             bluetoothPeripheralAndCentralCapableDelegate.application(UIApplication.shared,
                                                                      willFinishLaunchingWithOptions:
                 [
-                    UIApplicationLaunchOptionsKey.bluetoothPeripherals : peripheralsToRestore,
-                    UIApplicationLaunchOptionsKey.bluetoothCentrals : centralsToRestore
+                    UIApplication.LaunchOptionsKey.bluetoothPeripherals : peripheralsToRestore,
+                    UIApplication.LaunchOptionsKey.bluetoothCentrals : centralsToRestore
                 ]
             )
         )

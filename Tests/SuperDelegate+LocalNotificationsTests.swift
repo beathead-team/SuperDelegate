@@ -35,7 +35,7 @@ class SuperDelegateLocalNotificationTests: SuperDelegateTests {
         let localNotificationCapableDelegate = LocalNotificationCapableDelegate()
         let localNotification = UILocalNotification()
         localNotification.alertBody = "somebody"
-        XCTAssertTrue(localNotificationCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.localNotification : localNotification]))
+        XCTAssertTrue(localNotificationCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.localNotification : localNotification]))
         
         switch localNotificationCapableDelegate.launchItem {
         case let .localNotification(launchLocalNotification):
@@ -74,7 +74,7 @@ class SuperDelegateLocalNotificationTests: SuperDelegateTests {
         let localNotificationCapableDelegate = LocalNotificationCapableDelegate()
         let localNotification = UILocalNotification()
         localNotification.alertBody = "somebody"
-        XCTAssertTrue(localNotificationCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.localNotification : localNotification]))
+        XCTAssertTrue(localNotificationCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.localNotification : localNotification]))
         
         switch localNotificationCapableDelegate.launchItem {
         case let .localNotification(launchLocalNotification):
@@ -94,7 +94,7 @@ class SuperDelegateLocalNotificationTests: SuperDelegateTests {
         let localNotificationCapableDelegate = LocalNotificationCapableDelegate()
         let localNotification = UILocalNotification()
         localNotification.alertBody = "somebody"
-        XCTAssertTrue(localNotificationCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.localNotification : localNotification]))
+        XCTAssertTrue(localNotificationCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.localNotification : localNotification]))
         
         switch localNotificationCapableDelegate.launchItem {
         case let .localNotification(launchLocalNotification):
@@ -105,7 +105,7 @@ class SuperDelegateLocalNotificationTests: SuperDelegateTests {
         
         XCTAssertNil(localNotificationCapableDelegate.receivedLocalNotification)
         
-        NotificationCenter.default.post(name: NSNotification.Name.UIApplicationWillEnterForeground, object: UIApplication.shared)
+        NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
         
         localNotificationCapableDelegate.application(UIApplication.shared, didReceive: localNotification)
         
@@ -116,7 +116,7 @@ class SuperDelegateLocalNotificationTests: SuperDelegateTests {
         let localNotificationCapableDelegate = LocalNotificationCapableDelegate()
         let localNotification = UILocalNotification()
         localNotification.alertBody = "somebody"
-        XCTAssertTrue(localNotificationCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplicationLaunchOptionsKey.localNotification : localNotification]))
+        XCTAssertTrue(localNotificationCapableDelegate.application(UIApplication.shared, didFinishLaunchingWithOptions: [UIApplication.LaunchOptionsKey.localNotification : localNotification]))
         
         switch localNotificationCapableDelegate.launchItem {
         case let .localNotification(launchLocalNotification):

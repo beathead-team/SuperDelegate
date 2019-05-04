@@ -34,9 +34,9 @@ class SuperDelegateUserActivityTests: SuperDelegateTests {
         
         userActivityCapableDelegate.shouldHandleNextUserActivity = false
         let launchOptions = [
-            UIApplicationLaunchOptionsKey.userActivityDictionary : [
-                UIApplicationLaunchOptionsKey.userActivity : NSUserActivity(activityType: userActivityType),
-                UIApplicationLaunchOptionsKey.userActivityType : userActivityType
+            UIApplication.LaunchOptionsKey.userActivityDictionary : [
+                UIApplication.LaunchOptionsKey.userActivity : NSUserActivity(activityType: userActivityType),
+                UIApplication.LaunchOptionsKey.userActivityType : userActivityType
             ]
         ]
         
@@ -81,9 +81,9 @@ class SuperDelegateUserActivityTests: SuperDelegateTests {
         let userActivityType = "does this look like user activity to you?"
         
         let launchOptions = [
-            UIApplicationLaunchOptionsKey.userActivityDictionary : [
-                UIApplicationLaunchOptionsKey.userActivity : NSUserActivity(activityType: userActivityType),
-                UIApplicationLaunchOptionsKey.userActivityType : userActivityType
+            UIApplication.LaunchOptionsKey.userActivityDictionary : [
+                UIApplication.LaunchOptionsKey.userActivity : NSUserActivity(activityType: userActivityType),
+                UIApplication.LaunchOptionsKey.userActivityType : userActivityType
             ]
         ]
         
@@ -104,9 +104,9 @@ class SuperDelegateUserActivityTests: SuperDelegateTests {
         let userActivity = NSUserActivity(activityType: userActivityType)
         
         let launchOptions = [
-            UIApplicationLaunchOptionsKey.userActivityDictionary : [
-                UIApplicationLaunchOptionsKey.userActivity : userActivity,
-                UIApplicationLaunchOptionsKey.userActivityType : userActivityType
+            UIApplication.LaunchOptionsKey.userActivityDictionary : [
+                UIApplication.LaunchOptionsKey.userActivity : userActivity,
+                UIApplication.LaunchOptionsKey.userActivityType : userActivityType
             ]
         ]
         
@@ -135,9 +135,9 @@ class SuperDelegateUserActivityTests: SuperDelegateTests {
         let userActivity = NSUserActivity(activityType: userActivityType)
         
         let launchOptions = [
-            UIApplicationLaunchOptionsKey.userActivityDictionary : [
-                UIApplicationLaunchOptionsKey.userActivity : userActivity,
-                UIApplicationLaunchOptionsKey.userActivityType : userActivityType
+            UIApplication.LaunchOptionsKey.userActivityDictionary : [
+                UIApplication.LaunchOptionsKey.userActivity : userActivity,
+                UIApplication.LaunchOptionsKey.userActivityType : userActivityType
             ]
         ]
         
@@ -153,7 +153,7 @@ class SuperDelegateUserActivityTests: SuperDelegateTests {
         
         XCTAssertNil(userActivityCapableDelegate.continuedUserActivity)
         
-        NotificationCenter.default.post(name: NSNotification.Name.UIApplicationWillEnterForeground, object: UIApplication.shared)
+        NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: UIApplication.shared)
         
         XCTAssertTrue(userActivityCapableDelegate.application(UIApplication.shared, continue: userActivity, restorationHandler: { (_) in
             // Nothing to do here
@@ -168,9 +168,9 @@ class SuperDelegateUserActivityTests: SuperDelegateTests {
         let userActivity = NSUserActivity(activityType: userActivityType)
         
         let launchOptions = [
-            UIApplicationLaunchOptionsKey.userActivityDictionary : [
-                UIApplicationLaunchOptionsKey.userActivity : userActivity,
-                UIApplicationLaunchOptionsKey.userActivityType : userActivityType
+            UIApplication.LaunchOptionsKey.userActivityDictionary : [
+                UIApplication.LaunchOptionsKey.userActivity : userActivity,
+                UIApplication.LaunchOptionsKey.userActivityType : userActivityType
             ]
         ]
         

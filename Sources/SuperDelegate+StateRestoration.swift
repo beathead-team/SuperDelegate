@@ -90,7 +90,7 @@ extension SuperDelegate {
         
     }
     
-    final public func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
+    final public func application(_ application: UIApplication, viewControllerWithRestorationIdentifierPath identifierComponents: [String], coder: NSCoder) -> UIViewController? {
         guard let stateRestorationCapableSelf = self as? StateRestorationCapable else {
             noteImproperAPIUsage("Received viewControllerWithRestorationIdentifierPath but \(self) does not conform to StateRestorationCapable. Not handling state restoration event.")
             return nil
